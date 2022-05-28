@@ -1,0 +1,39 @@
+.container {
+    margin:0;
+    padding: 0;
+    background-color: aqua;
+}
+.App_container {
+    text-align: center;
+}
+
+
+.menu_item ul {
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding:0;
+    width: 200px;
+  }
+  
+  .menu_item li a {
+    padding: 2rem;
+    margin:2rem;
+    font-size: 20px;
+  }
+  
+  /* Change the link color on hover */
+  .menu_item li a:hover {
+    color: rgb(255, 0, 0);
+  }
+  @media (max-width: 1200px) {
+    .menu_item {
+        display: none;
+    }
+}
+
+  @media (max-width: 600px) {
+    .menu_item {
+        display: none;
+    }
+}
