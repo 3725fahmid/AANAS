@@ -8,10 +8,10 @@ type Props = {
 
 const Layout = ({ children }: Props) => {
   return (
-    <Container>
+    <div>
       <HEader />
-      {children}
-    </Container>
+      <Container>{children}</Container>
+    </div>
   );
 };
 
