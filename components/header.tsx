@@ -6,9 +6,7 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import avatarImage from '../static/images/avatar/2.jpg';
 import InputBase from '@mui/material/InputBase';
-import Badge from '@mui/material/Badge';
 import Avatar from '@mui/material/Avatar';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
@@ -16,19 +14,20 @@ import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Button from '@mui/material/Button';
 import SearchIcon from '@mui/icons-material/Search';
-import AccountCircle from '@mui/icons-material/AccountCircle';
-import MailIcon from '@mui/icons-material/Mail';
-import NotificationsIcon from '@mui/icons-material/Notifications';
-import MoreIcon from '@mui/icons-material/MoreVert';
 import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
 import StarsRoundedIcon from '@mui/icons-material/StarsRounded';
 import AutoAwesomeMotionRoundedIcon from '@mui/icons-material/AutoAwesomeMotionRounded';
 import Link from 'next/link';
-import style from '../styles/Header.module.css';
 import AutoStoriesSharpIcon from '@mui/icons-material/AutoStoriesSharp';
 
+// ================================= PAGES ====================================
+
 const pages = ['Home', 'Favorite', 'Story'];
+
+// ================================= SETTING ====================================
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+
+// ================================= APP BAR HANDELER ====================================
 
 const ResponsiveAppBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
@@ -54,10 +53,56 @@ const ResponsiveAppBar = () => {
     setAnchorElUser(null);
   };
 
+  // ================================= SEARCH BAR HENDELER====================================
+
+  const Search = styled('div')(({ theme }) => ({
+    position: 'relative',
+    borderRadius: theme.shape.borderRadius,
+    backgroundColor: alpha(theme.palette.common.white, 0.15),
+    '&:hover': {
+      backgroundColor: alpha(theme.palette.common.white, 0.25),
+    },
+    marginRight: theme.spacing(2),
+    marginLeft: 0,
+    width: '100%',
+    [theme.breakpoints.up('sm')]: {
+      marginLeft: theme.spacing(3),
+      width: 'auto',
+    },
+  }));
+
+  const SearchIconWrapper = styled('div')(({ theme }) => ({
+    padding: theme.spacing(0, 2),
+    height: '100%',
+    position: 'absolute',
+    pointerEvents: 'none',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  }));
+
+  const StyledInputBase = styled(InputBase)(({ theme }) => ({
+    color: 'inherit',
+    '& .MuiInputBase-input': {
+      padding: theme.spacing(1, 1, 1, 0),
+      // vertical padding + font size from searchIcon
+      paddingLeft: `calc(1em + ${theme.spacing(4)})`,
+      transition: theme.transitions.create('width'),
+      width: '100%',
+      [theme.breakpoints.up('md')]: {
+        width: '20ch',
+      },
+    },
+  }));
+
+  // ================================= RETURN OUTPUT ====================================
+
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
+          {/* ================================= LOGO ICON ==================================== */}
+
           <AutoStoriesSharpIcon
             sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }}
           />
@@ -77,6 +122,9 @@ const ResponsiveAppBar = () => {
           >
             <Link href="/">AANAS</Link>
           </Typography>
+
+          {/* ================================= MENU ICON SMALL SCREEN ==================================== */}
+
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
               size="large"
@@ -113,6 +161,9 @@ const ResponsiveAppBar = () => {
               ))}
             </Menu>
           </Box>
+
+          {/* ================================= LOGO ICON SMALL SCREEN ==================================== */}
+
           <AutoStoriesSharpIcon
             sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }}
           />
@@ -123,7 +174,7 @@ const ResponsiveAppBar = () => {
             href=""
             sx={{
               mr: 2,
-              display: { xs: 'flex', md: 'none' },
+              display: { xs: 'none', md: 'none' },
               flexGrow: 1,
               fontFamily: 'monospace',
               fontWeight: 700,
@@ -134,44 +185,81 @@ const ResponsiveAppBar = () => {
           >
             <Link href="/">AANAS</Link>
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {/* {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-                {page}
-              </Button>
-            ))} */}
+
+          {/* ================================= SEARCH BAR DESIGN ==================================== */}
+
+          <Search>
+            <SearchIconWrapper>
+              <SearchIcon />
+            </SearchIconWrapper>
+            <StyledInputBase
+              placeholder="Search…"
+              inputProps={{ 'aria-label': 'search' }}
+            />
+          </Search>
+
+          {/* ================================= MENU BAR LEARGE SCEEN ==================================== */}
+
+          <Box
+            sx={{
+              justifyContent: 'center',
+              gap: 10,
+              flexGrow: 1,
+              display: { xs: 'none', md: 'flex' },
+            }}
+          >
             <Button
-              variant="contained"
               onClick={handleCloseNavMenu}
-              sx={{ my: 2, color: 'white', display: 'block' }}
+              sx={{
+                my: 2,
+                color: 'white',
+                display: 'block',
+                '&:hover': {
+                  backgroundColor: 'primary.main',
+                  color: 'gray',
+                },
+              }}
             >
               <Link href="/">
-                <HomeRoundedIcon fontSize="large" />
+                <HomeRoundedIcon />
               </Link>
             </Button>
             <Button
-              variant="contained"
               onClick={handleCloseNavMenu}
-              sx={{ my: 2, color: 'white', display: 'block' }}
+              sx={{
+                my: 2,
+                color: 'white',
+                display: 'block',
+                '&:hover': {
+                  backgroundColor: 'primary.main',
+                  color: 'gray',
+                },
+              }}
             >
               <Link href="/favorite">
-                <StarsRoundedIcon fontSize="large" />
+                <StarsRoundedIcon />
               </Link>
             </Button>
             <Button
-              variant="contained"
               onClick={handleCloseNavMenu}
-              sx={{ my: 2, color: 'white', display: 'block' }}
+              sx={{
+                my: 2,
+                color: 'white',
+                display: 'block',
+                '&:hover': {
+                  backgroundColor: 'primary.main',
+                  color: 'gray',
+                },
+              }}
             >
-              <Link href="/">
-                <AutoAwesomeMotionRoundedIcon fontSize="large" />
+              <Link href="/about">
+                <AutoAwesomeMotionRoundedIcon />
               </Link>
             </Button>
           </Box>
+
+          {/* ================================= AVATER AND SEETING FOR SMALL SCREEN ==================================== */}
+
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
