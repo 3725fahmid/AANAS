@@ -5,37 +5,21 @@ import Card from '../components/card';
 import { Container } from '@mui/material';
 
 export default function Home() {
-  //const [Nascards, setNasCards] = useState([]);
-
-  // useEffect(() => {
-  //   fetch('https://qissabd.herokuapp.com/api/user')
-  //     .then((res) => res.json())
-  //     .then((data) => setNasCards(data));
-  // }, []);
-
   return (
     <div>
-      <Container sx={{ position: 'relative', top: '3' }}>
+      <Container sx={{ mt: 15, p: 0.5 }}>
         <Grid container spacing={3}>
-          {/* {Nascards.map((Nascard) => (
-            <Grid item key={Nascard.id} xs={12} md={6} lg={4}>
-            <Paper>
-              <Card Nascard={Nascard} />
-            </Paper>
-          </Grid>
-          ))} */}
-
-          <Grid item xs={12} md={6} lg={4}>
+          <Grid item xs={12} md={12}>
             <Paper>
               <Card />
             </Paper>
           </Grid>
-          <Grid item xs={12} md={6} lg={4}>
+          <Grid item xs={12} md={12}>
             <Paper>
               <Card />
             </Paper>
           </Grid>
-          <Grid item xs={12} md={6} lg={4}>
+          <Grid item xs={12} md={12}>
             <Paper>
               <Card />
             </Paper>

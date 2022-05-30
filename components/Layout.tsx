@@ -11,7 +11,9 @@ const Layout = ({ children }: Props) => {
   return (
     <div>
       <HEader />
+
       <Container>{children}</Container>
+
       <Footer />
     </div>
   );

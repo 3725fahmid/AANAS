@@ -4,12 +4,12 @@ import CardHeader from '@mui/material/CardHeader';
 import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
-import { IconButton, Typography } from '@mui/material';
+import { Container, IconButton, Typography } from '@mui/material';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 
 export default function card() {
   return (
-    <div>
+    <Container>
       <Card elevation={3}>
         <CardHeader
           action={
@@ -29,6 +29,6 @@ export default function card() {
           </Typography>
         </CardContent>
       </Card>
-    </div>
+    </Container>
   );
 }

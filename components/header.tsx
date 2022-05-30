@@ -98,7 +98,7 @@ const ResponsiveAppBar = () => {
   // ================================= RETURN OUTPUT ====================================
 
   return (
-    <AppBar sx={{ position: 'stiky' }}>
+    <AppBar sx={{ position: 'fixed', p: '2', mr: '3', zIndex: 5 }}>
       <Container>
         <Toolbar disableGutters>
           {/* ================================= LOGO ICON ==================================== */}
@@ -147,6 +147,9 @@ const ResponsiveAppBar = () => {
               inputProps={{ 'aria-label': 'search' }}
             />
           </Search>
+          <Button sx={{ bg: 'black', color: 'white' }}>
+            <SearchIcon />
+          </Button>
 
           {/* ================================= MENU BAR LEARGE SCEEN ==================================== */}
 
@@ -194,22 +197,6 @@ const ResponsiveAppBar = () => {
                 </a>
               </Link>
             </Button>
-            {/* <Button
-              onClick={handleCloseNavMenu}
-              sx={{
-                my: 2,
-                color: 'white',
-                display: 'block',
-                '&:hover': {
-                  backgroundColor: 'primary.main',
-                  color: 'gray',
-                },
-              }}
-            >
-              <Link href="/about">
-                <AutoAwesomeMotionRoundedIcon />
-              </Link>
-            </Button> */}
           </Box>
 
           {/* ================================= AVATER AND SEETING FOR SMALL SCREEN ==================================== */}
@@ -217,7 +204,7 @@ const ResponsiveAppBar = () => {
           <Box
             sx={{
               flexGrow: 0,
-              display: { xs: 'none', md: 'none', lg: 'flex' },
+              display: { xs: 'flex', md: 'flex', lg: 'flex' },
             }}
           >
             <Tooltip title="Open settings">
