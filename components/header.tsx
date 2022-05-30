@@ -66,7 +66,7 @@ const ResponsiveAppBar = () => {
     marginLeft: 0,
     width: '100%',
     [theme.breakpoints.up('sm')]: {
-      marginLeft: theme.spacing(3),
+      marginLeft: theme.spacing(25),
       width: 'auto',
     },
   }));
@@ -86,20 +86,20 @@ const ResponsiveAppBar = () => {
     '& .MuiInputBase-input': {
       padding: theme.spacing(1, 1, 1, 0),
       // vertical padding + font size from searchIcon
-      paddingLeft: `calc(1em + ${theme.spacing(4)})`,
+      paddingLeft: `calc(1em + ${theme.spacing(3)})`,
       transition: theme.transitions.create('width'),
       width: '100%',
-      [theme.breakpoints.up('md')]: {
-        width: '20ch',
+      [theme.breakpoints.up('lg')]: {
+        width: '40ch',
       },
     },
   }));
-
+  const N = 'none';
   // ================================= RETURN OUTPUT ====================================
 
   return (
-    <AppBar position="static">
-      <Container maxWidth="xl">
+    <AppBar sx={{ position: 'stiky' }}>
+      <Container>
         <Toolbar disableGutters>
           {/* ================================= LOGO ICON ==================================== */}
 
@@ -112,7 +112,7 @@ const ResponsiveAppBar = () => {
             component="a"
             sx={{
               mr: 2,
-              display: { xs: 'none', md: 'flex' },
+              display: { xs: 'none', md: 'flex', lg: 'flex' },
               fontFamily: 'monospace',
               fontWeight: 700,
               letterSpacing: '.3rem',
@@ -120,71 +120,21 @@ const ResponsiveAppBar = () => {
               textDecoration: 'none',
             }}
           >
-            <Link href="/">AANAS</Link>
+            <Link href="/">
+              <a>AANAS</a>
+            </Link>
           </Typography>
 
           {/* ================================= MENU ICON SMALL SCREEN ==================================== */}
 
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              color="inherit"
-            >
-              <MenuIcon />
-            </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'left',
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{
-                display: { xs: 'block', md: 'none' },
-              }}
-            >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box>
-
           {/* ================================= LOGO ICON SMALL SCREEN ==================================== */}
-
-          <AutoStoriesSharpIcon
-            sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }}
-          />
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href=""
-            sx={{
-              mr: 2,
-              display: { xs: 'none', md: 'none' },
-              flexGrow: 1,
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
-            }}
-          >
-            <Link href="/">AANAS</Link>
-          </Typography>
+          <Link href="/">
+            <a>
+              <AutoStoriesSharpIcon
+                sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }}
+              />
+            </a>
+          </Link>
 
           {/* ================================= SEARCH BAR DESIGN ==================================== */}
 
@@ -205,7 +155,7 @@ const ResponsiveAppBar = () => {
               justifyContent: 'center',
               gap: 10,
               flexGrow: 1,
-              display: { xs: 'none', md: 'flex' },
+              display: { xs: 'none', md: 'flex', lg: 'flex' },
             }}
           >
             <Button
@@ -221,7 +171,9 @@ const ResponsiveAppBar = () => {
               }}
             >
               <Link href="/">
-                <HomeRoundedIcon />
+                <a>
+                  <HomeRoundedIcon />
+                </a>
               </Link>
             </Button>
             <Button
@@ -237,10 +189,12 @@ const ResponsiveAppBar = () => {
               }}
             >
               <Link href="/favorite">
-                <StarsRoundedIcon />
+                <a>
+                  <StarsRoundedIcon />
+                </a>
               </Link>
             </Button>
-            <Button
+            {/* <Button
               onClick={handleCloseNavMenu}
               sx={{
                 my: 2,
@@ -255,12 +209,17 @@ const ResponsiveAppBar = () => {
               <Link href="/about">
                 <AutoAwesomeMotionRoundedIcon />
               </Link>
-            </Button>
+            </Button> */}
           </Box>
 
           {/* ================================= AVATER AND SEETING FOR SMALL SCREEN ==================================== */}
 
-          <Box sx={{ flexGrow: 0 }}>
+          <Box
+            sx={{
+              flexGrow: 0,
+              display: { xs: 'none', md: 'none', lg: 'flex' },
+            }}
+          >
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar alt="Fahim Sharp" src="/2.jpg" />
