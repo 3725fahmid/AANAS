@@ -6,26 +6,18 @@ import { Container } from '@mui/material';
 
 export default function Home() {
   return (
-    <div>
-      <Container sx={{ mt: 15, p: 0.5 }}>
-        <Grid container spacing={3}>
-          <Grid item xs={12} md={12}>
-            <Paper>
-              <Card />
-            </Paper>
-          </Grid>
-          <Grid item xs={12} md={12}>
-            <Paper>
-              <Card />
-            </Paper>
-          </Grid>
-          <Grid item xs={12} md={12}>
-            <Paper>
-              <Card />
-            </Paper>
-          </Grid>
+    <Container>
+      <Grid container spacing={3}>
+        <Grid item xs={12} md={12}>
+          <Card />
         </Grid>
-      </Container>
-    </div>
+        <Grid item xs={12} md={12}>
+          <Card />
+        </Grid>
+        <Grid item xs={12} md={12}>
+          <Card />
+        </Grid>
+      </Grid>
+    </Container>
   );
 }
